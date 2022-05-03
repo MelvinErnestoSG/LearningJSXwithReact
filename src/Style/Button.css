@@ -1,0 +1,11 @@
+.boton {
+  color:#61dafb;
+  background-color:#000;
+}
+
+.boton:hover {
+  color:#61dafb;
+  background-color:#FFF;
+  font-weight: bold;
+  cursor: pointer;
+}
