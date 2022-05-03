@@ -22,10 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +32,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.texto1, .texto2 , .parrafo, .boton, .pie{
+  font-weight: bold;
+  color:#61dafb;
+}
+
+.boton:hover{
+  background-color:#000;
+  font-weight: bold;
+  cursor: pointer;
 }
