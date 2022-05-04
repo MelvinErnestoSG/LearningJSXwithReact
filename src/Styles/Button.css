@@ -1,0 +1,14 @@
+.Boton {
+  color:#61dafb;
+  font-size: 20px;
+  background-color:	#f4eeee;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.Boton:hover {
+  color:#61dafb;
+  background-color:#000;
+  font-weight: bold;
+  cursor: pointer;
+}
