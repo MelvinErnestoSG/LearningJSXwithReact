@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Greeting from './Component/Greeting';
-import Paragraph from './Component/Paragraph';
-import Registration from './Component/Registration';
-import Button from './Component/Button';
-import Footer from './Component/Footer';
+import Greeting from './Components/Greeting';
+import Paragraph from './Components/Paragraph';
+import Registration from './Components/Registration';
+import Button from './Components/Button';
+import Footer from './Components/Footer';
 
 function App() {
   return (
