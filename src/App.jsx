@@ -1,31 +1,62 @@
-import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
-import Greeting from './Components/Greeting';
-import Paragraph from './Components/Paragraph';
-import Registration from './Components/Registration';
-import Button from './Components/Button';
-import Footer from './Components/Footer';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
+const inicialState = {name:'', price: 0};
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    
-      <Greeting />{/*Funcion de Saludar Texto h1.*/}
+const App = () => {
+    const [product, setProduct] = useState(inicialState);
 
-      <Paragraph />{/*Funcion de Parrafo.*/}
+    const handleChange = (e) => {
+        const fieldValue = e.target.value;
+        const fieldName = e.target.name;
+        console.log({fieldValue, fieldName})
+        setProduct({...product, [fieldValue]: fieldName});
+    }
 
-      <Registration />{/*Funcion de Texto h2.*/}
+    const handleSubmit = (e) => {
+        e.preventDefaut();
+        fetch('http://localhost:3000/api/v1/products',{
+            method: 'POST',
+            headers: {
+                'Content-type':'application/json',
+            },
+            body: JSON.stringify(product),
+        })
+        .then((res) =>res.json())
+        .then((data) => {
+            if(data.ok){
+                console.log("Exito");
+                setProduct(inicialState);
+            }
+            else{
+                console.log(data.message);
+            }
+        })
+        .catch((err) => console.log({err}))
+    }
 
-      <Button />{/*Funcion del boton.*/}
+    return (
+        <div className="App">
+            <h1>Nuevo Producto</h1>
+            <form onSubmit={handleSubmit}>
+                <input onChange={handleChange} 
+                    value={product.name}
+                    type="text" 
+                    name='name' 
+                    placeholder='Nombre del producto'>
+                </input>
 
-      <Footer />{/*Funcion de Pie de Pagina.*/}
-      
-    </div>
-  );
+                <input onChange={handleChange} 
+                    value={product.price}
+                    type="number" 
+                    name='price' 
+                    placeholder='Precio del producto'>
+                </input>
+                <button>Crear Producto</button>
+            </form>
+        </div>
+    );
 }
 
 export default App;
